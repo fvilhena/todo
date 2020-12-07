@@ -2,7 +2,7 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:edit, :update, :destroy]
 
   def index
-    @tasks = Task.all
+    @tasks = Task.order(:due_date)
   end
 
   def new
@@ -34,7 +34,7 @@ class TasksController < ApplicationController
 
   def destroy
     @task.destroy
-    edirect_to tasks_url, notice: 'Tarefa foi removida com sucesso.'
+    redirect_to tasks_url, notice: 'Tarefa foi removida com sucesso.'
   end
 
   private
